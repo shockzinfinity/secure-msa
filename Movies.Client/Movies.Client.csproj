@@ -14,5 +14,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ApiServices\" />
+    <Folder Include="HttpHandlers\" />
   </ItemGroup>
 </Project>
