@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -18,6 +19,19 @@ namespace ApiGateway
     // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
     public void ConfigureServices(IServiceCollection services)
     {
+      var authenticationProviderKey = "IdentityApiKey";
+
+      services.AddAuthentication()
+        .AddJwtBearer(authenticationProviderKey, x =>
+        {
+          x.Authority = "https://localhost:5005"; // identity server address
+          //x.RequireHttpsMetadata = false;
+          x.TokenValidationParameters = new TokenValidationParameters
+          {
+            ValidateAudience = false
+          };
+        });
+
       services.AddOcelot();
     }
 
