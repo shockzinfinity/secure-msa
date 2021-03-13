@@ -22,10 +22,18 @@ namespace Movies.Client.Controllers
       _movieApiService = movieApiService ?? throw new ArgumentNullException(nameof(movieApiService));
     }
 
+    [Authorize(Roles = "admin")]
+    public async Task<IActionResult> OnlyAdmin()
+    {
+      var userInfo = await _movieApiService.GetUserInfo();
+
+      return View(userInfo);
+    }
+
     // GET: Movies
     public async Task<IActionResult> Index()
     {
-      LogTokenAndClaim(); // await 해도 되고, 안해도 되고, 다만 페이지 로딩 전 보고 싶을땐 await 없이...
+      await LogTokenAndClaim(); // await 해도 되고, 안해도 되고, 다만 페이지 로딩 전 보고 싶을땐 await 없이...
       return View(await _movieApiService.GetMovies());
     }
 

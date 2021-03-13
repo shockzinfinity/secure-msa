@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Security.Claims;
 using IdentityModel;
@@ -46,7 +44,10 @@ namespace IdentityServer
         {
           IdentityServerConstants.StandardScopes.OpenId,
           IdentityServerConstants.StandardScopes.Profile,
-          "movieAPI"
+          IdentityServerConstants.StandardScopes.Address,
+          IdentityServerConstants.StandardScopes.Email,
+          "movieAPI",
+          "roles" // must be same as identity resource part
         }
       }
     };
@@ -63,7 +64,10 @@ namespace IdentityServer
     public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[]
     {
       new IdentityResources.OpenId(), // client scope 추가에 따른 identity resource 추가
-      new IdentityResources.Profile() // client scope 추가에 따른 identity resource 추가
+      new IdentityResources.Profile(), // client scope 추가에 따른 identity resource 추가
+      new IdentityResources.Address(),
+      new IdentityResources.Email(),
+      new IdentityResource("roles", "Your role(s)", new List<string>() {"role"})
     };
 
     public static List<TestUser> TestUsers => new List<TestUser>
