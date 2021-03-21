@@ -39,7 +39,7 @@ namespace Movies.Client
         .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
         .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
         {
-          options.Authority = "https://localhost:5005";
+          options.Authority = "https://auth.shockz.io";
 
           options.ClientId = "movies_mvc_client";
           options.ClientSecret = "secret";
@@ -78,7 +78,7 @@ namespace Movies.Client
       // 2 create an HttpClient used for accessing the IDP
       services.AddHttpClient("IDPClient", client =>
       {
-        client.BaseAddress = new Uri("https://localhost:5005/");
+        client.BaseAddress = new Uri("https://auth.shockz.io/");
         client.DefaultRequestHeaders.Clear();
         client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
       });

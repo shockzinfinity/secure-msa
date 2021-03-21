@@ -35,7 +35,7 @@ namespace Movies.API
       services.AddAuthentication("Bearer")
         .AddJwtBearer("Bearer", options =>
         {
-          options.Authority = "https://localhost:5005";
+          options.Authority = "https://auth.shockz.io";
           options.TokenValidationParameters = new TokenValidationParameters
           {
             ValidateAudience = false

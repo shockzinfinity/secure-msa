@@ -24,7 +24,7 @@ namespace ApiGateway
       services.AddAuthentication()
         .AddJwtBearer(authenticationProviderKey, x =>
         {
-          x.Authority = "https://localhost:5005"; // identity server address
+          x.Authority = "https://auth.shockz.io"; // identity server address
           //x.RequireHttpsMetadata = false;
           x.TokenValidationParameters = new TokenValidationParameters
           {
