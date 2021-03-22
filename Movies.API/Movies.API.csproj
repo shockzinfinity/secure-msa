@@ -23,4 +23,7 @@
     <Folder Include="Controllers\" />
     <Folder Include="Model\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BuildingBlocks\Common.Logging\Common.Logging.csproj" />
+  </ItemGroup>
 </Project>

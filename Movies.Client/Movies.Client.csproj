@@ -16,4 +16,7 @@
     <Folder Include="ApiServices\" />
     <Folder Include="HttpHandlers\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BuildingBlocks\Common.Logging\Common.Logging.csproj" />
+  </ItemGroup>
 </Project>
